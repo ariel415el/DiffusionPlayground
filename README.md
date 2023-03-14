@@ -17,9 +17,9 @@ I added two architecture:
 ## Usage
 Have a look at all the possible parameters at main.py
 
-### Train on mnist
+### Train on mnist/cifar
 ```
-python3 main.py --ddpm_imp v2
+python3 main.py
 ```
 Outputs after 9000 train steps:
 
@@ -28,10 +28,20 @@ Outputs after 9000 train steps:
   <img src="readme_images/mnist_losses.png" width="260" /> 
 </p>
 
+```
+python3 main.py --dataset cifar
+```
+Outputs after 20000 train steps:
+
+<p float="center">
+  <img src="readme_images/cifar_step-20000.png" width="200"/>
+  <img src="readme_images/cifar_losses.png" width="260" /> 
+</p>
+
 ### Train on other dataset
 dataset folder should have sub-folders with images
 ```
-python3 main.py --data_path <path to dataset> --c 3
+python3 main.py --dataset <path to dataset> --c 3
 ```
 
 

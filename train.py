@@ -12,7 +12,7 @@ from utils.data import get_dataset
 
 def train(ddpm, args):
     ddpm.to(args.device)
-    dataset = get_dataset(args.data_path, args.im_size, args.c)
+    dataset = get_dataset(args.dataset, args.im_size, args.c)
     loader = DataLoader(dataset, args.batch_size, shuffle=True)
 
     optim = Adam(ddpm.parameters(), args.lr)

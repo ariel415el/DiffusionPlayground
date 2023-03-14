@@ -31,7 +31,7 @@ def main():
     # Set parameters
     parser = argparse.ArgumentParser(description='Train DDPM')
     # Data parameters
-    parser.add_argument('--data_path', default='mnist', help="A path to a folder with subfolders with images. If mnist/cifar the mnist is downloaded and used")
+    parser.add_argument('--dataset', default='mnist', help="A path to a folder with subfolders with images. If mnist/cifar the mnist is downloaded and used")
     parser.add_argument('--im_size', type=int, default=32, help="Images are resized to this size")
     parser.add_argument('--c', type=int, default=1, help="Desired number of image channesl 1 turns images to grayscale 3 is RGB")
 
