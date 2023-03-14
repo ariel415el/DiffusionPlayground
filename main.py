@@ -31,7 +31,7 @@ def main():
     # Set parameters
     parser = argparse.ArgumentParser(description='Train DDPM')
     # Data parameters
-    parser.add_argument('--dataset_path', default='mnist', help="A path to a folder with subfolders with images. If 'mnist' the mnist is downloaded and used")
+    parser.add_argument('--data_path', default='mnist', help="A path to a folder with subfolders with images. If mnist/cifar the mnist is downloaded and used")
     parser.add_argument('--im_size', type=int, default=32, help="Images are resized to this size")
     parser.add_argument('--c', type=int, default=1, help="Desired number of image channesl 1 turns images to grayscale 3 is RGB")
 
@@ -41,7 +41,6 @@ def main():
     parser.add_argument('--min_beta', type=float, default=10 ** -4)
     parser.add_argument('--denoiser_arch', type=str, default="Unet")
     parser.add_argument('--ddpm_imp', type=str, default='v1')
-
 
     # Train parameters
     parser.add_argument('--n_epochs', type=int, default=10)
@@ -56,7 +55,6 @@ def main():
     args = parser.parse_args()
     args.device = torch.device(args.device)
     print(f"Using device: {args.device}\t" + (f"{torch.cuda.get_device_name(0)}"))
-
 
     denoiser = get_denoiser(args)
 

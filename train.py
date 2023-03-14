@@ -12,7 +12,7 @@ from utils.data import get_dataset
 
 def train(ddpm, args):
     ddpm.to(args.device)
-    dataset = get_dataset(args.dataset_path, args.im_size, args.c)
+    dataset = get_dataset(args.data_path, args.im_size, args.c)
     loader = DataLoader(dataset, args.batch_size, shuffle=True)
 
     optim = Adam(ddpm.parameters(), args.lr)
@@ -69,14 +69,16 @@ class Logger:
 
     def check_loss(self, aggregate_interval=1000):
         step = len(self.losses)
+
+        # Plot loss
+        plt.plot(range(step), self.losses)
+        plt.savefig(f"{self.outputs_dir}/losses.png")
+        plt.clf()
+
+        # Track best loss
         aggrloss = np.mean(self.losses[-aggregate_interval:])
         self.pbar.set_description(f"Aggregated loss at step {step}: {aggrloss:.5f}")
         if aggrloss < self.best_loss:
             self.best_loss = aggrloss
             return True
-
-        plt.plot(range(step), self.losses)
-        plt.savefig(f"{self.outputs_dir}/losses.png")
-        plt.clf()
-
         return False
