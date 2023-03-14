@@ -29,12 +29,12 @@ Outputs after 9000 train steps:
 </p>
 
 ```
-python3 main.py --dataset cifar
+python3 main.py --dataset cifar -c 3 --num_epochs 1000
 ```
-Outputs after 20000 train steps:
+Outputs after 70000 train steps:
 
 <p float="center">
-  <img src="readme_images/cifar_step-20000.png" width="200"/>
+  <img src="readme_images/cifar_step-70000.png" width="200"/>
   <img src="readme_images/cifar_losses.png" width="260" /> 
 </p>
 
