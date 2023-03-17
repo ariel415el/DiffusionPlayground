@@ -1,4 +1,5 @@
 import argparse
+import os
 
 import torch
 
@@ -20,7 +21,8 @@ def get_ddpm_imp(denoiser, args):
 
 def get_denoiser(args):
     if args.denoiser_arch == "Unet":
-        denoiser = GenericUnet(scales=(32, 16, 8, 4), c=args.c, n_steps=args.n_steps)
+        d = args.im_size
+        denoiser = GenericUnet(scales=(d, d//2, d//4, d//8), nf=128, c=args.c, n_steps=args.n_steps)
     else:
         denoiser = DummyEpsModel(args.c)
 
@@ -53,6 +55,8 @@ def main():
     parser.add_argument('--out_dir', type=str, default="outputs")
 
     args = parser.parse_args()
+    args.out_dir = os.path.join(args.out_dir, os.path.basename(args.dataset))
+
     args.device = torch.device(args.device)
     print(f"Using device: {args.device}\t" + (f"{torch.cuda.get_device_name(0)}"))
 
