@@ -43,8 +43,12 @@ dataset folder should have sub-folders with images
 ```
 python3 main.py --dataset <path to dataset> --c 3
 ```
+Results on FFHQ 64x64 after 222000 steps:
 
-
+<p float="center">
+  <img src="readme_images/FFHQ64_step-222000.png" width="200"/>
+  <img src="readme_images/FFHQ64_losses.png" width="260" /> 
+</p>
 # Credits
 - https://github.com/BrianPulfer/PapersReimplementations/blob/main/ddpm/models.py
 - https://github.com/VSehwag/minimal-diffusion.git
